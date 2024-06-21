@@ -4,9 +4,9 @@ import asyncio
 import os 
 from email.message import EmailMessage
 import smtplib
-from dotenv import load_dotenv
-load_dotenv()
 
+
+# print(os.environ['TO_EMAIL_ID'])
 
 async def sendEmailAsAleart(email_content,subject="Render Acc Expired !!!!!"):
     CONTENT = f"""
@@ -16,12 +16,12 @@ async def sendEmailAsAleart(email_content,subject="Render Acc Expired !!!!!"):
     # print(os.environ.get('EMAIL_PASS'))
     email_msg = EmailMessage()
     email_msg['subject'] = subject
-    email_msg['From'] = os.environ.get('FROM_EMAIL_ID')
+    email_msg['From'] = os.environ['FROM_EMAIL_ID']
     email_msg.set_content(CONTENT)
     s = smtplib.SMTP('smtp.gmail.com',587)
     s.starttls()
-    s.login(os.environ.get('FROM_EMAIL_ID'),os.environ.get('EMAIL_PASS'))
-    s.sendmail(os.environ.get('FROM_EMAIL_ID'),os.environ.get('TO_EMAIL_ID'),email_msg.as_string())
+    s.login(os.environ['FROM_EMAIL_ID'],os.environ['EMAIL_PASS'])
+    s.sendmail(os.environ['FROM_EMAIL_ID'],os.environ['TO_EMAIL_ID'],email_msg.as_string())
     s.quit()
     return "Email Sent Sucessfully!"
 

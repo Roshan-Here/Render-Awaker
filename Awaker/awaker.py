@@ -26,13 +26,13 @@ async def awaker_list(text_file_name):
                         else:            
                             print(f"Status for {url}: {response.status}")
             except Exception as e:
-                email_text = f"Status for {url}: {response.status}"
+                email_text = f"Status for {url}: {e}"
                 sent = await sendEmailAsAleart(email_text)
                 print(sent)
                 print(f"May be Shutdown: {url} {e}")
         
-        print('Sleeping for 35 seconds')
-        await asyncio.sleep(35)
+        print('Sleeping for 45 seconds')
+        await asyncio.sleep(45)
         
         # exit()
         
