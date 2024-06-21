@@ -2,7 +2,7 @@ name: Awaker Workflow
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # Runs every 10 minutes
+    - cron: '0 0 * * *'  # Runs every Every day -'*/10 * * * *' every 10 minitues
   workflow_dispatch:
 
 jobs:
